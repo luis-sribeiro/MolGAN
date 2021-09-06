@@ -1,5 +1,6 @@
 import pickle
 import numpy as np
+import os
 
 from rdkit import Chem
 
@@ -322,9 +323,13 @@ class SparseMolecularDataset():
 
 
 if __name__ == '__main__':
+    print(os.getcwd())
     data = SparseMolecularDataset()
-    data.generate('data/gdb9.sdf', filters=lambda x: x.GetNumAtoms() <= 9)
-    data.save('data/gdb9_9nodes.sparsedataset')
+    data.generate('../data/250k_rndm_zinc_drugs_clean_sorted.smi', validation=0, test=0)
+    #data.generate('data/gdb9.sdf', filters=lambda x: x.GetNumAtoms() <= 9)
+    #data.generate('../data/gdb9.sdf') #->Commenting because I am now running on ZINC250k
+    #data.save('data/gdb9_9nodes.sparsedataset')
+    #data.save('../data/gdb9.sparsedataset') #->Commenting because I am now running on ZINC250k
 
     # data = SparseMolecularDataset()
     # data.generate('data/qm9_5k.smi', validation=0.00021, test=0.00021)  # , filters=lambda x: x.GetNumAtoms() <= 9)

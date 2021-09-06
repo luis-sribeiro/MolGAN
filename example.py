@@ -20,7 +20,7 @@ epochs = 10
 save_every = 1 # May lead to errors if left as None
 
 data = SparseMolecularDataset()
-data.load('data/gdb9_9nodes.sparsedataset')
+data.load('data/gdb9.sparsedataset')
 
 steps = (len(data) // batch_dim)
 
@@ -209,6 +209,6 @@ trainer.train(batch_dim=batch_dim,
               test_fetch_dict=test_fetch_dict,
               test_feed_dict=test_feed_dict,
               save_every=save_every,
-              directory='', # here users need to first create and then specify a folder where to save the model
+              directory='trained_models/', # here users need to first create and then specify a folder where to save the model
               _eval_update=_eval_update,
               _test_update=_test_update)
